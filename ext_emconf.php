@@ -20,7 +20,6 @@ $EM_CONF['responsive_images'] = [
         'conflicts' => [],
     ],
     'state' => 'stable',
-    'clearCacheOnLoad' => true,
     'author' => 'KM2 >> GmbH Team',
     'author_email' => 'hallo@km2.de',
     'author_company' => 'KM2 >> GmbH',
