@@ -1,0 +1,68 @@
+name: Tests
+
+on: [ push, pull_request ]
+
+jobs:
+  test:
+    name: 'TYPO3: ${{ matrix.typo3 }} - PHP: ${{ matrix.php }}'
+    runs-on: ubuntu-26.04
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [ '8.4', '8.5' ]
+        typo3: [ '13.4', '14.3' ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Store Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache/restore@v4
+        id: restore-composer-cache
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ matrix.typo3 }}-${{ matrix.php }}
+          restore-keys: |
+            ${{ runner.os }}-composer-${{ matrix.typo3 }}-
+            ${{ runner.os }}-composer-
+
+      - name: Set up PHP Version ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, intl, pdo_sqlite, pdo_mysql
+          tools: composer:v2
+
+      - name: Environment Check
+        run: |
+          php --version
+          composer --version
+
+      - name: Validate composer.json
+        run: composer validate
+
+      - name: Composer install
+        run: composer update --with "typo3/cms-core:^${{ matrix.typo3 }}" --no-interaction
+
+      - name: Save composer cache
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ steps.restore-composer-cache.outputs.cache-primary-key }}
+
+      - name: Lint PHP
+        run: find . -name \*.php ! -path "./.Build/*" -exec php -d display_errors=stderr -l {} > /dev/null \;
+
+      - if: matrix.php == '8.4'
+        name: Validate PHP code style
+        run: composer php-cs-fixer
+
+      - if: matrix.php == '8.4'
+        name: Run Rector
+        run: composer rector
+
+      - if: matrix.php == '8.4'
+        name: Run PhpStan
+        run: composer phpstan
