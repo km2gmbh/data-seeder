@@ -86,7 +86,7 @@ class FilesProcessor extends AbstractRecordProcessor
         }
         // Allow invocation if form yaml file should be persisted
         $targetFilePath = $targetFolder->getCombinedIdentifier() . $targetFileName;
-        if (str_ends_with($sourceFile, 'form.yaml')) {
+        if (class_exists(FilePersistenceSlot::class) && str_ends_with($sourceFile, 'form.yaml')) {
             $filePersistenceSlot = GeneralUtility::makeInstance(FilePersistenceSlot::class);
             $contentSignature = $filePersistenceSlot->getContentSignature(file_get_contents($sourceFile) ?: '');
             $filePersistenceSlot->allowInvocation('fileAdd', $targetFilePath, $contentSignature);
