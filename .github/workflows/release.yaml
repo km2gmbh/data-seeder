@@ -1,0 +1,53 @@
+name: Deploy to TER
+
+on:
+  push:
+    tags:
+      - "v?[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  test:
+    uses: ./.github/workflows/tests.yml
+
+  release:
+    name: 'Deploy to TER'
+
+    needs: [ test ]
+
+    env:
+      php: 8.5
+      typo3: 14.3
+
+    if: github.repository == 'km2gmbh/data-seeder'
+
+    runs-on: ubuntu-26.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.php }}
+          tools: composer:v2
+          coverage: none
+
+      - name: Extract version from GITHUB_REF
+        id: github-ref
+        run: |
+          echo "version=$(echo $GITHUB_REF | sed -E -n 's#^refs/tags/v?([0-9]+\.)([0-9]+\.)([0-9]+)#\1\2\3#p')" >> $GITHUB_OUTPUT
+
+      - name: Composer install
+        run: |
+          composer global require typo3/tailor
+          export PATH=$PATH:$(composer global config bin-dir --absolute --quiet)
+
+      - name: Uploading release ${{ steps.github-ref.outputs.version }} to TER
+        run: |
+          export TAG_MESSAGE=$(git tag -n10 -l ${{ steps.github-ref.outputs.version }} | sed 's/^[v]*[0-9.]*[ ]*//g')
+          echo $TAG_MESSAGE
+          echo
+          TYPO3_API_TOKEN="${{ secrets.TYPO3_API_TOKEN }}" tailor ter:publish --comment "$TAG_MESSAGE" "${{ steps.github-ref.outputs.version }}" data_seeder
