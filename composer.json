@@ -1,0 +1,64 @@
+{
+	"name": "km2/data-seeder",
+	"description": "Seeding static data into TYPO3 database.",
+	"type": "typo3-cms-extension",
+	"license": "GPL-3.0-or-later",
+	"version": "0.3.0",
+	"keywords": [
+		"TYPO3",
+		"extension",
+		"seeding",
+		"seeder",
+		"seed"
+	],
+	"authors": [
+		{
+			"name": "KM2 >> GmbH Team",
+			"email": "hallo@km2.de",
+			"homepage": "https://km2.de",
+			"role": "Developer"
+		}
+	],
+	"homepage": "https://extensions.typo3.org/extension/data_seeder",
+	"support": {
+		"issues": "https://github.com/km2gmbh/data-seeder/issues",
+		"source": "https://github.com/km2gmbh/data-seeder",
+		"docs": "https://docs.typo3.org/p/km2/data-seeder/main/en-us/"
+	},
+	"require": {
+		"php": ">= 8.4 < 8.6",
+		"typo3/cms-core": "^13.4 || ^14.3",
+		"typo3/cms-form": "^13.4 || ^14.3"
+	},
+	"require-dev": {
+		"friendsofphp/php-cs-fixer": "^3.73",
+		"saschaegerer/phpstan-typo3": "^2.0 || ^3.0",
+		"ssch/typo3-rector": "^3.1",
+		"typo3/cms-backend": "^13.4 || ^14.3",
+		"typo3/cms-frontend": "^13.4 || ^14.3",
+		"typo3/cms-install": "^13.4 || ^14.3"
+	},
+	"autoload": {
+		"psr-4": {
+			"KM2\\DataSeeder\\": "Classes"
+		}
+	},
+	"scripts": {
+		"phpstan": "phpstan analyse --ansi --no-progress --memory-limit=1024M --configuration=phpstan.neon",
+		"php-cs-fixer": "php-cs-fixer fix --config=.php-cs-fixer.dist.php -v --dry-run --using-cache=no --diff",
+		"rector": "rector process --dry-run --config rector.php"
+	},
+	"config": {
+		"vendor-dir": ".Build/vendor",
+		"bin-dir": ".Build/bin",
+		"lock": false,
+		"allow-plugins": true
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "data_seeder",
+			"app-dir": ".Build",
+			"web-dir": ".Build/Web"
+		}
+	}
+}

@@ -1,0 +1,19 @@
+data:
+  loader: yaml
+  options:
+    type: 'folder'
+    path: 'EXT:data_seeder/Resources/Private/Example/data/'
+
+fal:
+  storages:
+    - identifier: default
+      storagePath: fileadmin/
+
+# Default ordering:
+# 1. files
+# 2. pages
+# 3. every other records
+# With this configuration, the order in that record types are created can be changed.
+ordering:
+  fe_users:
+    after: [ "fe_groups" ]

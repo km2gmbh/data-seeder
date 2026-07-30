@@ -1,0 +1,8 @@
+parameters:
+  level: 8
+  paths:
+    - Classes
+    - Configuration
+
+includes:
+    - .Build/vendor/saschaegerer/phpstan-typo3/extension.neon

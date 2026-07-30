@@ -1,0 +1,11 @@
+.DS_Store
+node_modules
+
+/.idea
+/.vscode
+/composer.lock
+/.php_cs.cache
+/.Build
+/.cache
+
+/Documentation-GENERATED-temp

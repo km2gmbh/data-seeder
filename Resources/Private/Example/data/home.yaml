@@ -1,0 +1,17 @@
+pages:
+  - identifier: home
+    pid: "{pages:root}"
+    sorting: 10
+    doktype: 1
+    title: Home
+    is_siteroot: 1
+
+tt_content:
+  - identifier: introduction
+    pid: "{pages:home}"
+    colPos: 0
+    sorting: 10
+    CType: text
+    header: "Welcome to your TYPO3 website"
+    header_layout: 1
+    bodytext: "{variable:paragraph}"
