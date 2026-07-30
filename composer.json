@@ -3,7 +3,7 @@
 	"description": "Seeding static data into TYPO3 database.",
 	"type": "typo3-cms-extension",
 	"license": "GPL-3.0-or-later",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"keywords": [
 		"TYPO3",
 		"extension",
