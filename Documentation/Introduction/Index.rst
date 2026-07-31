@@ -20,7 +20,10 @@ we decided to provide static data that can grow during project progression and c
 Quick start
 ===========
 
+This extension provides example data for creating a root page with a content element of type text.
+To trigger the seed,
+run the following command.
+
 ..  code-block:: bash
 
-    composer req km2/data-seeder
     vendor/bin/typo3 database:seed --config "EXT:data_seeder/Resources/Private/Example/seeder.yaml"
