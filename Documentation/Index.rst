@@ -69,18 +69,5 @@ No static UIDs are used.
    Introduction/Index
    Installation/Index
    Configuration/Index
-   Configuration/ConfigurationFile/Index
-   Configuration/Variables/Index
-   Configuration/References/Index
-   Configuration/Records/Index
-   Configuration/Relations/Index
-   Configuration/Operations/Index
    Commands/Index
-   Commands/Seed/Index
-   Commands/Flush/Index
    Developers/Index
-   Developers/Events/Index
-   Developers/Operations/Index
-   Developers/Loaders/Index
-   Developers/Processors/Index
-   Developers/PropertyConverters/Index
