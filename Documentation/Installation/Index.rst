@@ -24,8 +24,9 @@ See also `Installing extensions, TYPO3 Getting started <https://docs.typo3.org/p
 Install km2/data-seeder in Classic Mode
 =========================================
 
-Or download the extension from `https://extensions.typo3.org/package/data_seeder <https://extensions.typo3.org/package/data_seeder>`_ and install it in
-the Extension Manager.
+Or download the extension from
+`https://extensions.typo3.org/extension/data_seeder <https://extensions.typo3.org/extension/data_seeder>`_
+and install it in the Extension Manager.
 
 Quick start
 ===========
