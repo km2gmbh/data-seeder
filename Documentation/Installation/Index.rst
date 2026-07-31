@@ -26,3 +26,14 @@ Install km2/data-seeder in Classic Mode
 
 Or download the extension from `https://extensions.typo3.org/package/data_seeder <https://extensions.typo3.org/package/data_seeder>`_ and install it in
 the Extension Manager.
+
+Quick start
+===========
+
+This extension provides example data for creating a root page with a content element of type text.
+To trigger the seed,
+run the following command.
+
+..  code-block:: bash
+
+    vendor/bin/typo3 database:seed --config "EXT:data_seeder/Resources/Private/Example/seeder.yaml"
