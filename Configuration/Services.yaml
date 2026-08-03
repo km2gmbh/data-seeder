@@ -6,5 +6,3 @@ services:
 
   KM2\DataSeeder\:
     resource: '../Classes/*'
-    exclude:
-      - '../Classes/Domain/DataTransferObject/*'
