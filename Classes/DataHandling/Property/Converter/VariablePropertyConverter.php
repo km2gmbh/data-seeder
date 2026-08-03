@@ -15,7 +15,6 @@ use KM2\DataSeeder\Attribute\PropertyConverter;
 use KM2\DataSeeder\DataHandling\CombinedIdentifier;
 use KM2\DataSeeder\DataHandling\Node\NodeInterface;
 use KM2\DataSeeder\DataHandling\Property\Property;
-use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
 
 /**
  * Convert property value if it's only an identifier (direct match).
@@ -25,11 +24,6 @@ use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
 #[PropertyConverter('variable-property-converter', before: ['single-node-relation-property-converter'])]
 class VariablePropertyConverter extends AbstractPropertyConverter
 {
-    public function __construct(TcaSchemaFactory $tcaSchemaFactory)
-    {
-        $this->tcaSchemaFactory = $tcaSchemaFactory;
-    }
-
     /**
      * Always returns false to allow other converters use the new value.
      */

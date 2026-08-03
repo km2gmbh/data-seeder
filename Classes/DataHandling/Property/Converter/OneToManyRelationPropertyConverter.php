@@ -25,7 +25,6 @@ use KM2\DataSeeder\DataHandling\Property\PropertyCollection;
 use TYPO3\CMS\Core\Schema\Field\FieldTypeInterface;
 use TYPO3\CMS\Core\Schema\Field\RelationalFieldTypeInterface;
 use TYPO3\CMS\Core\Schema\RelationshipType;
-use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
 
 /**
  * @internal
@@ -36,12 +35,8 @@ use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
 )]
 class OneToManyRelationPropertyConverter extends AbstractPropertyConverter
 {
-    public function __construct(
-        private readonly NodeResolver $nodeResolver,
-        private readonly NodeFactory $nodeFactory,
-        TcaSchemaFactory $tcaSchemaFactory,
-    ) {
-        $this->tcaSchemaFactory = $tcaSchemaFactory;
+    public function __construct(private readonly NodeResolver $nodeResolver, private readonly NodeFactory $nodeFactory)
+    {
     }
 
     /**

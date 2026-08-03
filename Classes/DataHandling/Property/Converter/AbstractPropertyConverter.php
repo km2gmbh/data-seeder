@@ -21,6 +21,7 @@ use TYPO3\CMS\Core\Schema\Exception\UndefinedSchemaException;
 use TYPO3\CMS\Core\Schema\Field\FieldTypeInterface;
 use TYPO3\CMS\Core\Schema\Field\RelationalFieldTypeInterface;
 use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * @internal
@@ -30,8 +31,6 @@ abstract class AbstractPropertyConverter implements PropertyConverterInterface
     protected Configuration $configuration;
 
     protected RuntimeValues $runtimeValues;
-
-    protected TcaSchemaFactory $tcaSchemaFactory;
 
     public function setConfiguration(Configuration $configuration): void
     {
@@ -45,8 +44,10 @@ abstract class AbstractPropertyConverter implements PropertyConverterInterface
 
     protected function getTcaFieldTypeSchema(string $columnName, NodeInterface $node): ?FieldTypeInterface
     {
+        $tcaSchemaFactory = GeneralUtility::makeInstance(TcaSchemaFactory::class);
+
         try {
-            $tcaSchema = $this->tcaSchemaFactory->get($node->getRecordType());
+            $tcaSchema = $tcaSchemaFactory->get($node->getRecordType());
         } catch (UndefinedSchemaException) {
             return null;
         }
