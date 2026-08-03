@@ -17,6 +17,7 @@ use KM2\DataSeeder\DataHandling\Node\NodeFactory;
 use KM2\DataSeeder\DataHandling\Node\NodeInterface;
 use KM2\DataSeeder\DataHandling\Property\Property;
 use KM2\DataSeeder\DataHandling\Property\PropertyCollection;
+use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
 
 /**
  * @internal
@@ -28,8 +29,11 @@ use KM2\DataSeeder\DataHandling\Property\PropertyCollection;
 )]
 class FileRelationPropertyConverter extends AbstractPropertyConverter
 {
-    public function __construct(private readonly NodeFactory $nodeFactory)
-    {
+    public function __construct(
+        private readonly NodeFactory $nodeFactory,
+        TcaSchemaFactory $tcaSchemaFactory,
+    ) {
+        $this->tcaSchemaFactory = $tcaSchemaFactory;
     }
 
     /**
