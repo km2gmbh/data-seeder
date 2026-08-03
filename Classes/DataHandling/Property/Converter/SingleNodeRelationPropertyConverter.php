@@ -20,6 +20,7 @@ use KM2\DataSeeder\DataHandling\Node\MissingParentException;
 use KM2\DataSeeder\DataHandling\Node\NodeInterface;
 use KM2\DataSeeder\DataHandling\NodeResolver;
 use KM2\DataSeeder\DataHandling\Property\Property;
+use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
 
 /**
  * Convert property value if it's only an identifier (direct match).
@@ -29,8 +30,11 @@ use KM2\DataSeeder\DataHandling\Property\Property;
 #[PropertyConverter('single-node-relation-property-converter')]
 class SingleNodeRelationPropertyConverter extends AbstractPropertyConverter
 {
-    public function __construct(private readonly NodeResolver $nodeResolver)
-    {
+    public function __construct(
+        private readonly NodeResolver $nodeResolver,
+        TcaSchemaFactory $tcaSchemaFactory,
+    ) {
+        $this->tcaSchemaFactory = $tcaSchemaFactory;
     }
 
     /**
