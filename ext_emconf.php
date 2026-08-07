@@ -7,7 +7,7 @@
  * LICENSE file that was distributed with this source code.
  */
 
-$EM_CONF['responsive_images'] = [
+$EM_CONF[$_EXTKEY] = [
     'title' => 'Data seeder',
     'description' => 'This extension provides a command, that allows seeding data from YAML files into a TYPO3 database.',
     'category' => 'misc',
