@@ -16,7 +16,7 @@ $EM_CONF['responsive_images'] = [
         'depends' => [
             'php' => '8.4.0-',
             'typo3' => '13.4.0-14.3.99',
-            "typo3_console" => "8.0.2-9.99.99",
+            'typo3_console' => '8.0.2-9.99.99',
         ],
         'conflicts' => [],
     ],
