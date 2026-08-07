@@ -134,6 +134,7 @@ class OneToManyRelationPropertyConverter extends AbstractPropertyConverter
     ): int|string {
         /** @var FieldTypeInterface&RelationalFieldTypeInterface $fieldType */
         $fieldType = $this->getTcaFieldTypeSchema($propertyName, $node);
+        $tcaConfiguration = $fieldType->getConfiguration();
         $foreignField = null;
 
         $recordIdentifiers = [];
@@ -158,6 +159,11 @@ class OneToManyRelationPropertyConverter extends AbstractPropertyConverter
                         $childRecordData['pid'] = $pidFromParent;
                     }
                 }
+                $foreignTableField = $tcaConfiguration['foreign_table_field'] ?? null;
+                if ($foreignTableField !== null && $foreignTableField !== '') {
+                    $childRecordData[$foreignTableField] = $node->getRecordType();
+                }
+                $childRecordData = array_merge($tcaConfiguration['foreign_match_fields'] ?? [], $childRecordData);
                 $childNode = $this->nodeFactory->build($recordType, $childRecordIdentifier, new PropertyCollection($childRecordData), $node);
                 $recordIdentifiers[] = sprintf('%s:%s', $childNode->getRecordType(), $childNode->getIdentifier());
                 $node->getChildNodes()->add($childNode);
