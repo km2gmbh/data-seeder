@@ -6,10 +6,11 @@
 Operations
 ==========
 
-See :ref:`Operations <_configuration_operations>` for explanation.
+See :ref:`Operations <_configuration_operations>` for explanation an explanation what operations are used for.
 
-Custom operations can be registered using the PHP attribute :bash:`\KM2\DataSeeder\Attribute\Operation`.
+Custom operations can be registered using the PHP attribute :php:`\KM2\DataSeeder\Attribute\Operation`.
 Operation can not be used to manipulate seeding data. See :ref:`Events <_developers_events>` for data manipulation.
+However they can be used to access and manipulate variables.
 
 .. code-block:: php
   :caption: Operation is executed before data seeding.

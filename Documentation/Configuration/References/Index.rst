@@ -7,8 +7,8 @@ References
 ==========
 
 Without providing fixed UIDs, records can be referenced by their identifiers.
-They follow the scheme :yaml:`{<tablename>:<identifier>:<fieldname>}`.
-The fieldname is optional. If not given, the UID field is ised for replacement.
+They follow the scheme :yaml:`{<table_name>:<identifier>:<field_name>}`.
+The field name is optional. If not given, the field `uid` is used for replacement.
 
 There are some reserved / special identifiers:
 
@@ -28,6 +28,6 @@ There are some reserved / special identifiers:
   tt_content:
     - identifier: example
       pid: "{pages:home}"
-      CType: heaader
+      CType: header
       header: My example content
       header_layout: 1

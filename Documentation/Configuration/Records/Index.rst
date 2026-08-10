@@ -6,13 +6,13 @@
 Records and files
 =================
 
-Creating new records follows a default scheme.
-A table is defined as a property type on the root level and contains an array of records.
+Creating new records follows an easy to understand scheme.
+A database table is defined as a property on the root level and contains an array of records.
 Properties for each record can be added using the database column names.
 
 .. note::
 
-  It is recommended to use a unique identifier for each record.
+  It is recommended to use a unique identifier for each record within the `identifier` property.
   Allowed characters in identifiers are :bash:`a-z`, :bash:`A-Z`, :bash:`0-9`, :bash:`-` and :bash:`_`.
 
 .. code-block:: yaml
@@ -37,7 +37,7 @@ Properties for each record can be added using the database column names.
 Files
 =====
 
-Defining files is a special case.
+Defining FAL files is a special case.
 All files are added to the defined storage using FAL method including meta data extractors.
 
 .. code-block:: yaml

@@ -9,7 +9,8 @@ Relations
 Relations can be handled by defining each record with properties referencing the parent record.
 This is even possible for MM database relations.
 But there is an easier and shorter way doing it.
-Relations can be defined as array values for a property. Below are examples for each relation type
+Relations can be defined as array of combined identifier or objects referencing to the child records.
+Below are examples for each relation type.
 
 * :ref:`File references <_configuration_relations_files>`
 * :ref:`Relations to existing records <_configuration_relations_existing_records>`
@@ -72,12 +73,12 @@ Relations to existing records, no matter if its one-to-many, or many-to-many can
 Relations to new records
 ------------------------
 
-Relations to records that do not exist and should created by the relations can also be defined a a simplified version.
-The definition is done like every other records but as a property of the parent record.
+Relations to records that do not exist and can be easily created as relations.
+The structure is similar to structure creating new records. Just put them below the referencing property.
 
 .. note::
 
-  If no pid is given, that pid from the parent record is used (except is parent record is a page).
+  If no pid is given, that pid from the parent record is used (except if parent record is a page).
 
 .. code-block:: yaml
 

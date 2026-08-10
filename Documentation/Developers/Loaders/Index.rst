@@ -6,11 +6,12 @@
 Loaders
 =======
 
-Additional loaders can be registered for loading seeding data.
-By default this extension ship a YAML loader.
+This extension provides a loader to handle YAML files containing the seeding data.
 See :ref:`Configuration file <_configuration_file>` for an example.
 
-Additional loaders can be registered using the PHP attribute :php:`\KM2\DataSeeder\Attribute\DataLoader`.
+This section describes how custom loaders can be implemented.
+A custom loader needs to implements the interface :php:`\KM2\DataSeeder\DataHandling\Loader\DataLoaderInterface`
+and requires the PHP attribute :php:`\KM2\DataSeeder\Attribute\DataLoader` to be set.
 
 .. code-block:: php
   :caption: Custom loader class example
@@ -23,7 +24,7 @@ Additional loaders can be registered using the PHP attribute :php:`\KM2\DataSeed
   use KM2\DataSeeder\DataHandling\Loader\DataLoaderInterface;
 
   #[DataLoader(identifier: 'myLoader')]
-  class MyCustomOperation implements OperationInterface
+  class MyCustomLoader implements DataLoaderInterface
   {
       public function load(array $options = []): SeedingData
       {

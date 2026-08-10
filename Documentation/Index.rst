@@ -30,8 +30,13 @@ TYPO3 Data Seeder
 
 
 This extension provides the option to import static data sets into the TYPO3 database.
-This can be used to provide data for development teams or frontend tests.
-No static UIDs are used.
+There are multiple situations this might come in handy, like
+
+- providing development data for a project team
+- providing development data for extension development
+- providing testing data for 2e2 testing
+
+Because of the avoidance of using static UIDs, the seeding data is easily maintainable.
 
 .. card-grid::
   :columns: 1
@@ -41,23 +46,18 @@ No static UIDs are used.
   :card-height: 100
 
     .. card:: :ref:`Introduction <_introduction>`
-
       What is this extension about?
 
     .. card:: :ref:`Installation <_installation>`
-
       Install the data seeder extension.
 
     .. card:: :ref:`Configuration <_configuration>`
-
       What configuration options are available?
 
     .. card:: :ref:`Commands <_commands>`
-
       What commands are provided?
 
     .. card:: :ref:`Developers <_developers>`
-
       Developer corner for extending the extension.
 
 **Table of Contents**

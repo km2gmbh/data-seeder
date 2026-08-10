@@ -6,14 +6,15 @@
 Operations
 ==========
 
-Operations make it possible to execute before or after the data seeding happens.
-The configuration is done inside the main configuration file and not along the seed data.
-This extension provides the following operations by default:
+Operations make it possible to execute custom code before and after the data seeding happens.
+The configuration is done inside the main configuration file.
 
 Operations are configured below the :bash:`operations` property.
 Each operation requires a unique identifier that contains the operation configuration.
 
-For creating custom operations, see :ref:`Operations <_developers_operations>` page.
+For creating custom operations, see the :ref:`Operations <_developers_operations>` page.
+
+This extension provides the following operations by default:
 
 DotEnv Generator
 ================

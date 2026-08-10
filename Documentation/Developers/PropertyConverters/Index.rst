@@ -25,7 +25,7 @@ Custom property converters can be registered by using the PHP attribute :bash:`\
   use KM2\DataSeeder\DataHandling\RuntimeValues;
 
   #[PropertyConverter(identifier: 'replace-placeholder-property-converter', before: ['variable-property-converter'])]
-  class MyCustomOperation implements PropertyConverterInterface
+  class MyCustomPropertyConverter implements PropertyConverterInterface
   {
       protected Configuration $configuration;
 
