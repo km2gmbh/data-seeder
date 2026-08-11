@@ -8,7 +8,15 @@ EOF;
 
 $config = new PhpCsFixer\Config();
 $config->setRiskyAllowed(true);
-$config->getFinder()->in(__DIR__)->exclude(['node_modules', '.Build', 'var']);
+$config->getFinder()
+    ->in(realpath(__DIR__ . '/../../'))
+    ->ignoreVCSIgnored(true)
+    ->notPath('/^.Build\//')
+    ->notPath('/^Build\//')
+    ->notPath('/^var\//')
+    ->notPath('/^Documentation\//')
+    ->notName('/^ext_emconf.php/')
+;
 $config->setRules([
     '@DoctrineAnnotation' => true,
     '@PSR2' => true,

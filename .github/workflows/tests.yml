@@ -13,13 +13,13 @@ jobs:
         typo3: [ '13.4', '14.3' ]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Store Composer cache directory
         id: composer-cache
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache/restore@v4
+      - uses: actions/cache/restore@v6
         id: restore-composer-cache
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
@@ -47,7 +47,7 @@ jobs:
         run: composer update --with "typo3/cms-core:^${{ matrix.typo3 }}" --no-interaction
 
       - name: Save composer cache
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v6
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ steps.restore-composer-cache.outputs.cache-primary-key }}
