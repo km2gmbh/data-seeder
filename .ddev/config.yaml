@@ -11,7 +11,12 @@ database:
     version: "11.4"
 use_dns_when_possible: true
 composer_version: "2"
-web_environment: []
+web_environment:
+  # Functional Testing
+  - typo3DatabaseName=functional
+  - typo3DatabaseHost=db
+  - typo3DatabaseUsername=root
+  - typo3DatabasePassword=root
 nodejs_version: "24"
 corepack_enable: false
 
