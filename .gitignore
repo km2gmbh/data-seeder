@@ -7,5 +7,7 @@ node_modules
 /.php_cs.cache
 /.Build
 /.cache
+/config
+/var
 
 /Documentation-GENERATED-temp

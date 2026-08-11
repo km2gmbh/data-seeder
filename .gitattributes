@@ -1,9 +1,13 @@
+/.ddev
 /.editorconfig export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore
+/.github export-ignore
 /.php-cs-fixer.dist.php export-ignore
+/config export-ignore
 /phpstan.neon export-ignore
 /rector.php export-ignore
 /UnitTests.xml export-ignore
 /FunctionalTests.xml export-ignore
 /Tests/ export-ignore
+/var export-ignore

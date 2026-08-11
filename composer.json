@@ -58,8 +58,7 @@
 		"typo3/cms": {
 			"extension-key": "data_seeder",
 			"version": "0.4.4",
-			"app-dir": ".Build",
-			"web-dir": ".Build/Web"
+			"web-dir": ".Build/public"
 		}
 	}
 }
