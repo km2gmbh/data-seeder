@@ -51,6 +51,7 @@ class FilesProcessor extends AbstractRecordProcessor
     public function __construct(
         private readonly StorageRepository $storageRepository,
         private readonly NodeResolver $nodeResolver,
+        private readonly ConnectionPool $connectionPool,
     ) {
     }
 
@@ -177,7 +178,7 @@ class FilesProcessor extends AbstractRecordProcessor
 
     private function applyIdentifierToRecord(int $recordUid, string $table, string $identifier): void
     {
-        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($table);
+        $connection = $this->connectionPool->getConnectionForTable($table);
         $connection->update(
             $table,
             [

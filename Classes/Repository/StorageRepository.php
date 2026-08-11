@@ -16,12 +16,14 @@ use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 final readonly class StorageRepository
 {
-    public function __construct(private ConnectionPool $connectionPool, private FlexFormTools $flexFormTools)
-    {
+    public function __construct(
+        private ConnectionPool $connectionPool,
+        private FlexFormTools $flexFormTools,
+        private Context $context,
+    ) {
     }
 
     public function hasResourceStorage(string $identifier): bool
@@ -49,7 +51,6 @@ final readonly class StorageRepository
         $name = $storage->getIdentifier();
         $basePath = $storage->getPath();
         $pathType = $storage->isAbsolute() ? 'absolute' : 'relative';
-        $context = GeneralUtility::makeInstance(Context::class);
 
         $caseSensitive = $this->testCaseSensitivity($pathType === 'relative' ? Environment::getPublicPath() . '/' . $basePath : $basePath);
         // create the FlexForm for the driver configuration
@@ -69,8 +70,8 @@ final readonly class StorageRepository
         // create the record
         $field_values = [
             'pid' => 0,
-            'tstamp' => $context->getPropertyFromAspect('date', 'timestamp'),
-            'crdate' => $context->getPropertyFromAspect('date', 'timestamp'),
+            'tstamp' => $this->context->getPropertyFromAspect('date', 'timestamp'),
+            'crdate' => $this->context->getPropertyFromAspect('date', 'timestamp'),
             'name' => $name,
             'description' => $description,
             'driver' => 'Local',
