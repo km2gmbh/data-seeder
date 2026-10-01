@@ -53,7 +53,7 @@ class ManyToManyRelationPropertyConverter extends AbstractPropertyConverter
         }
 
         $relation = $fieldType->getRelations()[0] ?? null;
-        $MMTableName = $relation?->toTable() ?? null;
+        $MMTableName = $relation?->manyToManyTable() ?? null;
         if (empty($MMTableName)) {
             return false;
         }
