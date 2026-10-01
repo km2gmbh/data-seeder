@@ -21,9 +21,11 @@ use KM2\DataSeeder\DataHandling\Node\NodeInterface;
 use KM2\DataSeeder\DataHandling\NodeResolver;
 use KM2\DataSeeder\DataHandling\Property\Property;
 use KM2\DataSeeder\DataHandling\Property\PropertyCollection;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Schema\Field\FieldTypeInterface;
 use TYPO3\CMS\Core\Schema\Field\RelationalFieldTypeInterface;
 use TYPO3\CMS\Core\Schema\RelationshipType;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * @internal
@@ -53,7 +55,10 @@ class ManyToManyRelationPropertyConverter extends AbstractPropertyConverter
         }
 
         $relation = $fieldType->getRelations()[0] ?? null;
-        $MMTableName = $relation?->manyToManyTable() ?? null;
+        $MMTableName = match (GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion()) {
+            13 => $relation?->toTable() ?? null,
+            default => $relation?->manyToManyTable() ?? null,
+        };
         if (empty($MMTableName)) {
             return false;
         }
