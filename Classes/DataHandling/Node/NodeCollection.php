@@ -21,9 +21,7 @@ final class NodeCollection
     public function add(NodeInterface $node): void
     {
         $recordType = $node->getRecordType();
-        if (!isset($this->nodes[$recordType])) {
-            $this->nodes[$recordType] = [];
-        }
+        $this->nodes[$recordType] ??= [];
         $this->nodes[$recordType][$node->getIdentifier()] = $node;
     }
 
