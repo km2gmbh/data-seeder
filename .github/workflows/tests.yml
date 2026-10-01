@@ -63,6 +63,10 @@ jobs:
         name: Run Rector
         run: composer rector
 
-      - if: matrix.php == '8.4'
-        name: Run PhpStan
+      - if: matrix.php == '8.4' && matrix.typo3 == '13.4'
+        name: Run PhpStan v13
+        run: composer phpstan-v13
+
+      - if: matrix.php == '8.4' && matrix.typo3 == '14.3'
+        name: Run PhpStan v14
         run: composer phpstan

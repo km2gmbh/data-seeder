@@ -1,0 +1,10 @@
+parameters:
+  level: 8
+  paths:
+    - Classes
+    - Configuration
+  ignoreErrors:
+    - '#Call to an undefined method TYPO3\\CMS\\Core\\Schema\\ActiveRelation::manyToManyTable#'
+
+includes:
+    - .Build/vendor/saschaegerer/phpstan-typo3/extension.neon
