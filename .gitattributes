@@ -11,3 +11,5 @@
 /FunctionalTests.xml export-ignore
 /Tests/ export-ignore
 /var export-ignore
+/.claude-plugin export-ignore
+/skills export-ignore

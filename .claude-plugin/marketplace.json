@@ -1,0 +1,12 @@
+{
+  "name": "km2",
+  "description": "Claude Code plugins by KM2 GmbH",
+  "owner": { "name": "KM2 >> GmbH" },
+  "plugins": [
+    {
+      "name": "data-seeder",
+      "source": "./",
+      "description": "Skill for writing, running and debugging seed data with km2/data-seeder."
+    }
+  ]
+}
