@@ -1,0 +1,9 @@
+{
+  "name": "data-seeder",
+  "description": "Skill for writing, running and debugging seed data with the TYPO3 extension km2/data-seeder.",
+  "author": { "name": "KM2 >> GmbH", "url": "https://km2.de" },
+  "homepage": "https://docs.typo3.org/p/km2/data-seeder/main/en-us/",
+  "repository": "https://github.com/km2gmbh/data-seeder",
+  "license": "GPL-3.0-or-later",
+  "keywords": ["typo3", "seed", "test-data", "km2"]
+}
