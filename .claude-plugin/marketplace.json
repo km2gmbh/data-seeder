@@ -4,7 +4,7 @@
   "owner": { "name": "KM2 >> GmbH" },
   "plugins": [
     {
-      "name": "data-seeder",
+      "name": "km2",
       "source": "./",
       "description": "Skill for writing, running and debugging seed data with km2/data-seeder."
     }
